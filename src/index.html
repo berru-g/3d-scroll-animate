@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modèle 3D avec Animation au Scroll</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.min.js"></script>
+
+</head>
+
+<body>
+    <div class="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <div id="container3D"></div>
+
+    <div class="scroll-indicator">
+        <!--<span>Scroll pour animer le modèle</span>-->
+        <i class="fas fa-chevron-down"></i>
+    </div>
+
+    <div class="content">
+        <section class="sec">
+            <h1>Modèle 3D Interactif</h1>
+            <p>Ce modèle 3D réagit à ton scroll. Plus tu descends dans la page, plus le modèle change de rotation,
+                d'échelle et de couleur.</p>
+        </section>
+
+        <section class="secbis">
+            <h2>Animation au Scroll</h2>
+            <p>L'animation est contrôlée par la position de défilement de la page. Cette technique permet de créer des
+                expériences immersives où le contenu 3D et le défilement sont synchronisés.</p>
+            <p>Try scrolling down to see the model transform!</p>
+        </section>
+
+        <section class="sec">
+            <h2>Techniques Utilisées</h2>
+            <p>• Chargement de modèles GLTF avec Three.js</p>
+            <p>• Calcul de la position de scroll relative</p>
+            <p>• Application des transformations en fonction du scroll</p>
+            <p>• Interpolation des couleurs selon la progression</p>
+            <p>• Contrôles orbitaux pour navigation manuelle</p>
+        </section>
+
+        <section class="secbis">
+            <h2>Personnalisation</h2>
+            <p>Tu peux facilement personnaliser cet effet en modifiant les paramètres dans la fonction onScroll().</p>
+            <p>Change les valeurs de rotation, d'échelle, ou même ajoute de nouvelles transformations comme la position
+                ou l'intensité des lumières.</p>
+        </section>
+
+        <section class="sec">
+            <h2>Performance</h2>
+            <p>Pour de meilleures performances, assure-toi que ton modèle 3D est optimisé :</p>
+            <p>• Réduis le nombre de polygones</p>
+            <p>• Compresse les textures</p>
+            <p>• Utilise le format GLB pour un chargement plus rapide</p>
+        </section>
+    </div>
+
+    <script src="./script.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
