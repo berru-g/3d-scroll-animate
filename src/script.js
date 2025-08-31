@@ -58,8 +58,8 @@ function loadModel() {
 
     // Utilisation d'un modèle 3D glb ou gltf plus légé
     // https://cdn.jsdelivr.net/gh/mrdoob/three.js@dev/examples/models/gltf/Parrot.glb
-    //const modelUrl = 'https://raw.githubusercontent.com/berru-g/plane/main/avion/cessna172.glb';
-    const modelUrl = 'https://raw.githubusercontent.com/berru-g/3d-scroll-animate/main/assets/btwin_triban_100_road_bike.glb';
+    //https://raw.githubusercontent.com/berru-g/3d-scroll-animate/main/assets/btwin_triban_100_road_bike.glb 'https://raw.githubusercontent.com/berru-g/plane/main/avion/cessna172.glb';
+    const modelUrl = 'https://raw.githubusercontent.com/berru-g/3d-scroll-animate/main/assets/btwin_triban.glb';
 
     loader.load(
         modelUrl,
@@ -68,8 +68,8 @@ function loadModel() {
             scene.add(model);
 
             // Ajuster l'échelle et la position si nécessaire
-            model.scale.set(7, 7, 7);
-            model.position.set(0, -1, 0);
+            model.scale.set(4, 4, 4);
+            model.position.set(0, 10, 0);
 
             // Configurer les animations s'il y en a
             if (gltf.animations && gltf.animations.length) {
@@ -107,7 +107,7 @@ function loadModel() {
 
 function showFallbackModel() {
     // Créer un cube à la place si le modèle ne charge pas
-    const geometry = new THREE.BoxGeometry(2, 2, 2);
+    const geometry = new THREE.BoxGeometry(0.4, 0.4, 0.4);
     const material = new THREE.MeshPhongMaterial({
         color: 0x6b5ce7,
         shininess: 100,
@@ -144,7 +144,7 @@ function onScroll() {
     model.rotation.z = scrollPercentage * Math.PI;
 
     // Modifier l'échelle en fonction du scroll
-    const scale = 7 + scrollPercentage * 1.5;
+    const scale = 2 + scrollPercentage * 1.5;
     model.scale.set(scale, scale, scale);
 
     // Modifier la position en Y pour un effet de "lévitation"

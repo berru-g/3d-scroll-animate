@@ -38,8 +38,9 @@ body {
 }
 
 .sec {
-    background: var(--bleudecat);
+    background: transparent;
     border-radius: 16px;
+  border: 1px solid var(--bleudecat);
     padding: 3rem;
     margin-bottom: 3rem;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -72,6 +73,37 @@ p {
     font-size: 1.2rem;
     line-height: 1.6;
     margin-bottom: 1.5rem;
+}
+
+button {
+  padding: 10px 10px;
+  gap: 10px;
+  border-radius: 8px;
+  border: none;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(54, 67, 186, 0.4);
+    transition: all 0.3s ease;
+}
+
+.btnprimary {
+  background-color: var(--bleudecat);
+  color: var(--white);
+}
+
+.btnsecondary {
+  background-color: var(--white);
+  color: var(--bleudecat);
+  border: 1px solid var(--bleudecat);
+}
+
+img {
+  display: flex;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 700px;
 }
 
 .loader {
