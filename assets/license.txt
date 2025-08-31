@@ -1,0 +1,11 @@
+Model Information:
+* title:	B’Twin Triban 100 Road Bike
+* source:	https://sketchfab.com/3d-models/btwin-triban-100-road-bike-1443433035054564801ca9098c7e6e9f
+* author:	Tomaso (https://sketchfab.com/Tomasoo)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "B’Twin Triban 100 Road Bike" (https://sketchfab.com/3d-models/btwin-triban-100-road-bike-1443433035054564801ca9098c7e6e9f) by Tomaso (https://sketchfab.com/Tomasoo) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

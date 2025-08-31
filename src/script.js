@@ -59,7 +59,7 @@ function loadModel() {
     // Utilisation d'un modèle 3D glb ou gltf plus légé
     // https://cdn.jsdelivr.net/gh/mrdoob/three.js@dev/examples/models/gltf/Parrot.glb
     //https://raw.githubusercontent.com/berru-g/3d-scroll-animate/main/assets/btwin_triban_100_road_bike.glb 'https://raw.githubusercontent.com/berru-g/plane/main/avion/cessna172.glb';
-    const modelUrl = 'https://raw.githubusercontent.com/berru-g/3d-scroll-animate/main/assets/btwin_triban.glb';
+    const modelUrl = 'https://raw.githubusercontent.com/berru-g/3d-scroll-animate/main/assets/scene.gltf';
 
     loader.load(
         modelUrl,
