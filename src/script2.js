@@ -70,7 +70,7 @@ function loadModel() {
             scene.add(model);
 
             // Ajuster l'échelle et la position si nécessaire
-            initialScale = 0.1; // Définir l'échelle initiale
+            initialScale = 1; // Définir l'échelle initiale
             model.scale.set(initialScale, initialScale, initialScale);
             model.position.set(0, -1, 0); // Ajusté pour mieux centrer
 
@@ -137,6 +137,9 @@ function onWindowResize() {
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
+// function onScroll
+/* 
+// mouvement 360*360 + zoom + changement couleur + intensité lumière
 function onScroll() {
     if (!model) return;
 
@@ -170,6 +173,74 @@ function onScroll() {
     });
 }
 
+
+// variante simple rotation + translation horizontale
+function onScroll() {
+    if (!model) return;
+
+    const scrollY = window.scrollY;
+    const totalHeight = document.body.scrollHeight - window.innerHeight;
+    const scrollPercentage = Math.min(scrollY / totalHeight, 1);
+
+    // Rotation
+    model.rotation.y = scrollPercentage * Math.PI * 2;
+    
+    // Translation horizontale
+    model.position.x = (scrollPercentage - 0.5) * 4;
+}
+
+// Apparition progressive + rotation
+function onScroll() {
+    if (!model) return;
+
+    const scrollY = window.scrollY;
+    const totalHeight = document.body.scrollHeight - window.innerHeight;
+    const scrollPercentage = Math.min(scrollY / totalHeight, 1);
+
+    // Rotation
+    model.rotation.y = scrollPercentage * Math.PI * 2;
+    
+    // Apparition progressive (si ton matériau le supporte)
+    if (model.material) {
+        model.material.opacity = scrollPercentage;
+        model.material.transparent = true;
+    }
+}
+
+// Rotation avec oscillation (effet de vague)
+function onScroll() {
+    if (!model) return;
+
+    const scrollY = window.scrollY;
+    const totalHeight = document.body.scrollHeight - window.innerHeight;
+    const scrollPercentage = Math.min(scrollY / totalHeight, 1);
+
+    // Rotation principale
+    model.rotation.y = scrollPercentage * Math.PI * 2;
+    
+    // Oscillation supplémentaire (effet de vague)
+    model.rotation.x = Math.sin(scrollPercentage * Math.PI * 4) * 0.5;
+    model.position.y = Math.sin(scrollPercentage * Math.PI * 2) * 2;
+}
+    */
+
+// variante zoom + tour sur lui meme
+function onScroll() {
+    if (!model) return;
+
+    const scrollY = window.scrollY;
+    const totalHeight = document.body.scrollHeight - window.innerHeight;
+    const scrollPercentage = Math.min(scrollY / totalHeight, 1);
+
+    // Rotation simple
+    model.rotation.y = scrollPercentage * Math.PI * 2;
+    
+    // Zoom progressif
+    const scale = initialScale + scrollPercentage;
+    model.scale.set(scale, scale, scale);
+}
+
+// Animate function
 function animate() {
     requestAnimationFrame(animate);
 
