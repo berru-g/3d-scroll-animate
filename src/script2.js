@@ -61,7 +61,7 @@ function loadModel() {
     const loader = new THREE.GLTFLoader();
 
     // Utilisation d'un modèle 3D glb ou gltf plus léger
-    const modelUrl = 'https://raw.githubusercontent.com/berru-g/3d-scroll-animate/main/assets/scene.gltf';
+    const modelUrl = 'https://raw.githubusercontent.com/berru-g/3d-scroll-animate/main/assets/bike/scene.gltf';
 
     loader.load(
         modelUrl,
