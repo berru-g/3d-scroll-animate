@@ -12,94 +12,160 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.min.js"></script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="loader">
-        <div class="spinner"></div>
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Chargement de l'univers</div>
+        </div>
     </div>
 
     <div id="container3D"></div>
 
+    <div class="particles" id="particles"></div>
+
+    <nav class="nav-immersive">
+        <a href="#about" class="nav-btn">Découvrir</a>
+        <a href="#products" class="nav-btn">Collection</a>
+        <a href="#contact" class="nav-btn">Contact</a>
+    </nav>
+
+    <div class="content">
+        <!-- Hero section avec superposition 3D -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="float-animation">Univers Singulier</h1>
+                <p class="hero-tagline">Plongez dans une expérience où l'art et la technologie fusionnent pour créer l'extraordinaire</p>
+                <a href="#discover" class="btn-immersive">
+                    <i class="fas fa-arrow-down"></i>
+                    Explorer l'univers
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Sections de contenu (passent au-dessus du 3D au scroll) -->
+    <section id="discover" class="content-section">
+        <h2 class="section-title">Une Expérience Transcendante</h2>
+        
+        <div class="grid-immersive">
+            <div class="grid-item-3d">
+                <div class="grid-icon">
+                    <i class="fas fa-atom"></i>
+                </div>
+                <h3>Réalité Augmentée</h3>
+                <p>Interagissez avec nos créations dans votre espace grâce à la technologie de réalité augmentée de pointe.</p>
+            </div>
+            
+            <div class="grid-item-3d">
+                <div class="grid-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <h3>Design Algorithmique</h3>
+                <p>Chaque pièce est générée par des algorithmes uniques, garantissant son caractère exceptionnel.</p>
+            </div>
+            
+            <div class="grid-item-3d">
+                <div class="grid-icon">
+                    <i class="fas fa-infinity"></i>
+                </div>
+                <h3>Dimensions Multiples</h3>
+                <p>Explorez nos créations sous différents angles et dans diverses configurations spatiales.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" style="background: rgba(122, 75, 255, 0.05);">
+        <h2 class="section-title">Témoignages Cosmiques</h2>
+        
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p>"Cette expérience a radicalement transformé ma perception de l'art numérique. Absolument fascinant."</p>
+                <p><strong>— Élise R.</strong><br>Artiste numérique</p>
+            </div>
+            
+            <div class="testimonial-card">
+                <p>"Je n'avais jamais rien vu de semblable. L'immersion est totale, les sensations incomparables."</p>
+                <p><strong>— Thomas L.</strong><br>Collectionneur</p>
+            </div>
+            
+            <div class="testimonial-card">
+                <p>"La fusion entre technologie et art atteint ici des sommets inexplorés. Une révélation."</p>
+                <p><strong>— Dr. Sophie M.</strong><br>Critique d'art</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title">Collection Singularité</h2>
+        
+        <div class="grid-immersive">
+            <div class="grid-item-3d">
+                <h3>Nébuleuse Digitale</h3>
+                <p>Œuvre évolutive qui se transforme en interaction avec son environnement.</p>
+                <a href="#" class="btn-immersive" style="margin-top: 1.5rem;">
+                    <i class="fas fa-eye"></i>
+                    Voir en détail
+                </a>
+            </div>
+            
+            <div class="grid-item-3d">
+                <h3>Écho Dimensionnel</h3>
+                <p>Installation responsive qui réagit au son et au mouvement.</p>
+                <a href="#" class="btn-immersive" style="margin-top: 1.5rem;">
+                    <i class="fas fa-eye"></i>
+                    Voir en détail
+                </a>
+            </div>
+            
+            <div class="grid-item-3d">
+                <h3>Quantum Sculpture</h3>
+                <p>Sculpture virtuelle existant dans plusieurs états simultanément.</p>
+                <a href="#" class="btn-immersive" style="margin-top: 1.5rem;">
+                    <i class="fas fa-eye"></i>
+                    Voir en détail
+                </a>
+            </div>
+        </div>
+    </section>
+
     <div class="scroll-indicator">
-        <!--<span>Scroll pour animer le modèle</span>-->
         <i class="fas fa-chevron-down"></i>
     </div>
 
-    <div class="content">
-
-        <svg role="img" class="decathlon-logo vtmn-w-full vtmn-h-full" aria-hidden="true" viewBox="0 0 705 140" data-aos="fade-up" data-aos-delay="100"
-            fill="#3643ba">
-            <path
-                d="M107.707 20C68.6202 20 20 60.4415 20 93.9589C20 111.269 33.2965 120 50.858 120C63.7531 120 79.3578 115.283 94.4105 106.202V39.3176C90.3964 46.1917 71.5304 73.8886 56.3773 88.6402C48.6503 96.1666 42.5289 99.428 37.2604 99.428C31.3397 99.428 28.5299 95.4139 28.5299 89.4431C28.5299 62.3482 74.1395 27.1249 104.345 27.1249C116.789 27.1249 124.817 32.6443 124.817 43.3818C124.817 53.2162 118.144 65.5594 106.754 76.9493V97.6718C126.623 81.9669 138.515 61.9468 138.515 45.7902C138.515 28.7807 125.268 20 107.707 20Z M223.215 105H270.515V89.8H241.215V77.05H267.165V62.9H241.215V50.15H270.515V35H223.215V105ZM329.215 74.85C322.365 85.75 315.715 90.3 307.165 90.3C296.065 90.3 289.615 82.5 289.615 68.95C289.615 56.1 295.565 49.7 304.715 49.7C310.765 49.7 315.765 52.4 317.315 61.4H335.315C333.365 44.25 322.415 33.6 304.915 33.6C284.615 33.6 271.265 47.95 271.265 69.95C271.265 92.1 284.615 106.4 306.565 106.4C320.915 106.4 330.665 100.4 337.115 92.3H361.665V105H379.565V35H354.165L329.215 74.85ZM361.665 78.25H345.815L361.665 52.5V78.25ZM184.815 35H158.515V105H184.815C205.665 105 219.115 91.25 219.115 70C219.115 48.75 205.665 35 184.815 35ZM184.565 89.8H176.515V50.15H184.565C194.965 50.15 200.815 57.5 200.815 70C200.815 82.45 194.965 89.8 184.565 89.8ZM586.165 33.6C565.015 33.6 550.815 47.95 550.815 70C550.815 92.05 565.015 106.4 586.165 106.4C607.365 106.4 621.515 92.05 621.515 70C621.515 47.95 607.365 33.6 586.165 33.6ZM586.165 90.3C575.765 90.3 569.215 83.35 569.215 70C569.215 56.65 575.765 49.7 586.165 49.7C596.615 49.7 603.115 56.65 603.115 70C603.115 83.35 596.615 90.3 586.165 90.3ZM384.065 50.15H401.715V105H419.715V50.15H437.365V35H384.065L384.065 50.15ZM667.465 35V73.55L644.265 35H625.615V105H643.015V64.85L667.165 105H684.865V35L667.465 35ZM525.315 35H507.315V105H552.465V89.85H525.315V35ZM484.115 61.7H459.865V35H441.865V105H459.865V76.8H484.115V105H502.115V35H484.115V61.7Z">
-            </path>
-        </svg>
-
-        <section class="sec" data-aos="fade-up" data-aos-delay="200">
-
-            <h1>BTWIN</h1>
-            <p>Nous avons conçu ce vélo pour vous permettre de progresser facilement. Sa polyvalence et ses 2X8 vitesses
-                vous permettront d'explorer toutes les routes
-
-                Progressez avec un vélo polyvalent! Sa géométrie confort, son cadre en aluminium, sa fourche carbone et
-                ses freins à disque vous permettront de vous frotter à tous les types de parcours</p>
-        </section>
-
-        <section class="secbis" data-aos="fade-up" data-aos-delay="300">
-            <h2>Choisir la taille de mon vélo</h2>
-            <p>Le choix de la taille d'un vélo dépend de votre taille, mais également de votre morphologie (longueur des
-                jambes et amplitude des bras).
-                Si vous êtes entre 2 tailles, en prenant la plus petite, vous aurez une position plus sportive, la plus
-                grande, une position plus confort.</p>
-            <p>• XS 155 165 cm</p>
-            <p>• S 165 173</p>
-            <p>• M 173 182</p>
-            <p>• L 182 190</p>
-            <p>• XL 190 200</p>
-
-            <img data-aos="fade-up" data-aos-delay="100"
-                src="https://contents.mediadecathlon.com/p1930211/k$f874c5b06b6f9485e0649e506e92bf08/sq/velo-route-cyclotourisme-rc120-flat-bar-disque-marine-orange.jpg?format=auto&f=1800x1800">
-
-            <p>Vous pouvez essayer en magasin un Triban 120 sans disque, la géométrie du cadre étant identique.
-                Certains magasins proposent le service d'Etude Posturale.</p>
-        </section>
-
-        <section class="sec" data-aos="fade-up" data-aos-delay="100">
-            <h2>Techniques Utilisées</h2>
-            <p>• Chargement de modèles GLTF avec Three.js</p>
-            <p>• Calcul de la position de scroll relative</p>
-            <p>• Application des transformations en fonction du scroll</p>
-            <p>• Interpolation des couleurs selon la progression</p>
-            <p>• Contrôles orbitaux pour navigation manuelle</p>
-        </section>
-
-        <section class="secbis" data-aos="fade-up" data-aos-delay="100">
-            <h2>Entretien & réparation</h2>
-            <p>Guides et notices, tutoriels pas à pas, pièces détachées compatibles : retrouvez toutes les informations
-                pour entretenir et réparer facilement votre produit</p>
-            <a href="#"><button class="btnprimary">Site Support</button></a>
-            <a href="#"><button class="btnsecondary">F.A.Q</button></a>
-        </section>
-
-        <section class="sec" data-aos="fade-up" data-aos-delay="100">
-            <h2>Personnalisation</h2>
-            <p>Tu peux facilement personnaliser cet effet en modifiant les paramètres dans la fonction onScroll().</p>
-            <p>Change les valeurs de rotation, d'échelle, ou même ajoute de nouvelles transformations comme la position
-                ou l'intensité des lumières.</p>
-        </section>
-
-    </div>
     <script>
-        // anim au scroll
-        AOS.init({
-            duration: 800,        // Durée de l'animation en ms
-            easing: 'ease-out',   // Type d'effet
-            once: true,           // Ne joue l'animation qu'une fois
+        // Simuler le chargement
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.querySelector('.loader').style.opacity = '0';
+                setTimeout(function() {
+                    document.querySelector('.loader').style.display = 'none';
+                }, 500);
+            }, 1500);
         });
+
+        // Animation au scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(el => {
+            observer.observe(el);
+        });
+
+        // Ici tu peux ajouter ton code Three.js existant
     </script>
+    
     <script src="./script2.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

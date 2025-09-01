@@ -1,7 +1,50 @@
+// Simuler le chargement
+window.addEventListener('load', function () {
+    setTimeout(function () {
+        document.querySelector('.loader').style.opacity = '0';
+        setTimeout(function () {
+            document.querySelector('.loader').style.display = 'none';
+        }, 800);
+    }, 2000);
+});
+
+// Créer des particules décoratives
+function createParticles() {
+    const container = document.getElementById('particles');
+    const particleCount = 30;
+
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+
+        // Propriétés aléatoires
+        const size = Math.random() * 5 + 2;
+        const posX = Math.random() * 100;
+        const posY = Math.random() * 100;
+        const delay = Math.random() * 5;
+        const duration = Math.random() * 10 + 10;
+
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${posX}%`;
+        particle.style.top = `${posY}%`;
+        particle.style.animationDelay = `${delay}s`;
+        particle.style.animationDuration = `${duration}s`;
+
+        // Couleur aléatoire
+        const colors = ['#7b4bff', '#00e0ff', '#ff2a78'];
+        particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+        container.appendChild(particle);
+    }
+}
+
+createParticles();
+
 // Variables globales
 let scene, camera, renderer, model, mixer;
 let controls, clock;
-let initialScale = 0.1; // Stocker l'échelle initiale
+let initialScale = 0.9; // Stocker l'échelle initiale
 
 // Initialisation de Three.js
 function init() {
@@ -15,7 +58,7 @@ function init() {
     camera.position.set(0, 0, 5);
 
     // Créer le renderer avec alpha pour transparence
-    renderer = new THREE.WebGLRenderer({ 
+    renderer = new THREE.WebGLRenderer({
         antialias: true,
         alpha: true // Important pour fond transparent
     });
@@ -61,7 +104,7 @@ function loadModel() {
     const loader = new THREE.GLTFLoader();
 
     // Utilisation d'un modèle 3D glb ou gltf plus léger
-    const modelUrl = 'https://raw.githubusercontent.com/berru-g/3d-scroll-animate/main/assets/perfum_bottle.glb';
+    const modelUrl = 'https://raw.githubusercontent.com/berru-g/3d-scroll-animate/main/assets/nebula_skybox_16k.glb';
 
     loader.load(
         modelUrl,
@@ -70,7 +113,7 @@ function loadModel() {
             scene.add(model);
 
             // Ajuster l'échelle et la position si nécessaire
-            initialScale = 1; // Définir l'échelle initiale
+            initialScale = 0.9; // Définir l'échelle initiale
             model.scale.set(initialScale, initialScale, initialScale);
             model.position.set(0, -1, 0); // Ajusté pour mieux centrer
 
@@ -138,7 +181,7 @@ function onWindowResize() {
 }
 
 // function onScroll
-/* 
+
 // mouvement 360*360 + zoom + changement couleur + intensité lumière
 function onScroll() {
     if (!model) return;
@@ -154,7 +197,7 @@ function onScroll() {
     model.rotation.z = scrollPercentage * Math.PI;
 
     // Modifier l'échelle en fonction du scroll en utilisant l'échelle initiale comme base
-    const scale = initialScale + scrollPercentage * 1.5;
+    const scale = initialScale + scrollPercentage * 7;
     model.scale.set(scale, scale, scale);
 
     // Modifier la position en Y pour un effet de "lévitation"
@@ -173,7 +216,7 @@ function onScroll() {
     });
 }
 
-
+/*
 // variante simple rotation + translation horizontale
 function onScroll() {
     if (!model) return;
@@ -222,7 +265,7 @@ function onScroll() {
     model.rotation.x = Math.sin(scrollPercentage * Math.PI * 4) * 0.5;
     model.position.y = Math.sin(scrollPercentage * Math.PI * 2) * 2;
 }
-    */
+    
 
 // variante zoom + tour sur lui meme
 function onScroll() {
@@ -239,6 +282,7 @@ function onScroll() {
     const scale = initialScale + scrollPercentage;
     model.scale.set(scale, scale, scale);
 }
+*/
 
 // Animate function
 function animate() {
@@ -257,7 +301,7 @@ function animate() {
 }
 
 // Démarrer l'application après le chargement de la page
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     // Petite temporisation pour s'assurer que tout est chargé
     setTimeout(init, 100);
 });
