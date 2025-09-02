@@ -103,7 +103,7 @@ function init() {
 function loadModel() {
     const loader = new THREE.GLTFLoader();
 
-    // Utilisation d'un modèle 3D glb ou gltf plus léger
+    // Utilisation d'un modèle 3D glb ou gltf plus léger assets/nebula_skybox_16k.glb
     //https://cdn.jsdelivr.net/gh/mrdoob/three.js@dev/examples/models/gltf/Parrot.glb
     const modelUrl = 'https://raw.githubusercontent.com/berru-g/3d-scroll-animate/main/assets/meteor.glb';
     //'https://raw.githubusercontent.com/berru-g/3d-scroll-animate/main/assets/cave_on_an_alien_planet_skybox.glb';
